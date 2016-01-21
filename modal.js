@@ -54,6 +54,9 @@ function modalFactoryFactory($animate, $compile, $rootScope, $controller, $q, $h
         if (!locals) {
           locals = {};
         }
+        for (var prop in locals) {
+          scope[prop] = locals[prop];
+        }
         locals.$scope = scope;
         var ctrl = $controller(controller, locals);
         if (controllerAs) {
