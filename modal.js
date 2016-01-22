@@ -68,13 +68,17 @@ function modalFactoryFactory($animate, $compile, $rootScope, $controller, $q, $h
         }
       }
       $compile(element)(scope);
-      return $animate.enter(element, container);
+      return $animate.enter(element, container).then(function () {
+        element.addClass('open');
+      });
     }
 
     function deactivate () {
       if (!element) {
         return $q.when();
       }
+
+      element.removeClass('open');
       return $animate.leave(element).then(function () {
         scope.$destroy();
         scope = null;
