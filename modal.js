@@ -68,9 +68,8 @@ function modalFactoryFactory($animate, $compile, $rootScope, $controller, $q, $h
         }
       }
       $compile(element)(scope);
-      return $animate.enter(element, container).then(function () {
-        element.addClass('open');
-      });
+      element.addClass('open');
+      return $animate.enter(element, container);
     }
 
     function deactivate () {
